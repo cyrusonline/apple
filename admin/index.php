@@ -93,7 +93,7 @@
           <th>Answer</th>
           <th>Paper</th>
           <th>Youtube</th>
-          <th>Topic</th>
+          
           
         </tr>
       </thead>
@@ -106,7 +106,7 @@
           <td>The required probability is</td>
           <td>1</td>
           <td>TcqsayIZdp0</td>
-          <td>Equation of Straight Line</td>
+          
         </tr>
            <tr>
           <th>1</th>
@@ -116,7 +116,7 @@
           <td>The required probability is</td>
           <td>1</td>
           <td>TcqsayIZdp0</td>
-          <td>Equation of Straight Line</td>
+          
         </tr>
            <tr>
           <th>1</th>
@@ -126,7 +126,7 @@
           <td>The required probability is</td>
           <td>1</td>
           <td>TcqsayIZdp0</td>
-          <td>Equation of Straight Line</td>
+          
         </tr>
       </tbody>
     </table>
