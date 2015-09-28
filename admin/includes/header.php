@@ -49,7 +49,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="../admin/index.php">Dashboard</a></li>
             <li><a href="../admin/add_question.php">Add Question</a></li>
-            <li><a href="#contact">Add Topics</a></li>
+            <li><a href="../admin/add_topic.php">Add Topics</a></li>
             <li><a href="#contact"></a></li>
             
           </ul>

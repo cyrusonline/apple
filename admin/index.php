@@ -100,6 +100,7 @@
        
       
       </tbody>
+      
     </table>
 		<table class="table table-striped">
       <thead>
@@ -113,25 +114,16 @@
         </tr>
       </thead>
       <tbody>
+      <?php while ($row = $topics->fetch_assoc()):?>
         <tr>
           <th>1</th>
-          <td>1</td>
-          <td>Trigonometry</td>
+          <td><?php echo $row['id'];?></td>
+          <td><a href="edit_topic.php?id=<?php echo $row['id']?>"><?php echo $row['name'];?></a></td>
+          
           
         </tr>
-       <tr>
-          <th>1</th>
-          <td>1</td>
-          <td>Trigonometry</td>
-          
-        </tr>
-        
-         <tr>
-          <th>1</th>
-          <td>1</td>
-          <td>Trigonometry</td>
-          
-        </tr>
+        <?php endwhile;?>
+  
       </tbody>
     </table>
 	

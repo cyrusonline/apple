@@ -1,4 +1,13 @@
 <?php include 'includes/header.php';?>
+<?php 
+
+$db = new Database();
+
+
+
+
+?>
+
 <div class="container">
 <h2>Add questions</h2>
 <form method="post" action="add_question.php">
@@ -23,8 +32,9 @@
     <input name="youtube" type="text" class="form-control"  placeholder="Enter Year">
   </div>
   <div>
-  <button name="submit" type="submit" class="btn btn-default">Submit</button>
+  <input name="submit" type="submit" class="btn btn-default" value="Submit"/>
   <a href = "index.php" class="btn btn-default">Cancel</a>
+ 
   </div>
 </form>
 </div>
