@@ -54,7 +54,7 @@
           <th>1</th>
           <td><?php echo $row['id'];?></td>
           <td><?php echo $row['year'];?></td>
-          <td><?php echo $row['number'];?></td>
+          <td><a href="edit_question.php?id=<?php echo $row['id']?>"><?php echo $row['number'];?></a></td>
           <td><?php echo $row['answer'];?></td>
           <td><?php echo $row['paper'];?></td>
           <td><?php echo $row['youtube'];?></td>
