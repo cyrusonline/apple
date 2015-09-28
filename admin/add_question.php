@@ -11,17 +11,20 @@
     <input name="number" type="text" class="form-control"  placeholder="Enter Question Number">
   </div>
    <div class="form-group">
-    <label>Year</label>
-    <input name="year" type="text" class="form-control"  placeholder="Enter Year">
+    <label>Answer</label>
+    <textarea name="answer" class="form-control" placeholder="Enter the answer"></textarea>
   </div>
    <div class="form-group">
-    <label>Year</label>
-    <input name="year" type="text" class="form-control"  placeholder="Enter Year">
+    <label>Paper</label>
+    <input name="paper" type="text" class="form-control"  placeholder="Enter Year">
   </div>
    <div class="form-group">
-    <label>Year</label>
-    <input name="year" type="text" class="form-control"  placeholder="Enter Year">
+    <label>Youtube</label>
+    <input name="youtube" type="text" class="form-control"  placeholder="Enter Year">
   </div>
+  <div>
   <button name="submit" type="submit" class="btn btn-default">Submit</button>
+  <a href = "index.php" class="btn btn-default">Cancel</a>
+  </div>
 </form>
 </div>

@@ -5,11 +5,14 @@
 	$db = new Database();
 	
 	
-		$query = "SELECT * FROM questions WHERE paper = 1";
+		$query = "SELECT * FROM questions WHERE paper = 1 ORDER by year, number";
 		$paper1 = $db->select($query);
 		
 		$query = "SELECT * FROM questions WHERE paper = 2";
 		$paper2 = $db->select($query);
+		
+		$query = "SELECT * FROM questions ORDER BY paper";
+		$questions = $db->select($query);
 			
 	
 	
@@ -27,6 +30,7 @@
 
     <div class="container">
 	<h2>Admin Area</h2>
+	<h1>Questions</h1>
 	<div class="col-md-12">
 	<table class="table table-striped">
       <thead>
@@ -38,45 +42,65 @@
           <th>Answer</th>
           <th>Paper</th>
           <th>Youtube</th>
+          <th>Date</th>
           
           
         </tr>
       </thead>
       <tbody>
+      	<?php while ($row = $paper1->fetch_assoc()):?>
         <tr>
+       
           <th>1</th>
-          <td>5</td>
-          <td>2005</td>
-          <td>3</td>
-          <td>The required probability is</td>
-          <td>1</td>
-          <td>TcqsayIZdp0</td>
+          <td><?php echo $row['id'];?></td>
+          <td><?php echo $row['year'];?></td>
+          <td><?php echo $row['number'];?></td>
+          <td><?php echo $row['answer'];?></td>
+          <td><?php echo $row['paper'];?></td>
+          <td><?php echo $row['youtube'];?></td>
+          <td><?php echo $row['date_add'];?></td>
           
         </tr>
-           <tr>
-          <th>1</th>
-          <td>5</td>
-          <td>2005</td>
-          <td>3</td>
-          <td>The required probability is</td>
-          <td>1</td>
-          <td>TcqsayIZdp0</td>
-          
-        </tr>
-           <tr>
-          <th>1</th>
-          <td>5</td>
-          <td>2005</td>
-          <td>3</td>
-          <td>The required probability is</td>
-          <td>1</td>
-          <td>TcqsayIZdp0</td>
-          
-        </tr>
+        <?php endwhile;?>
+       
+        
       </tbody>
     </table>
 	
-	
+	<table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>id</th>
+          <th>Year</th>
+          <th>Question number</th>
+          <th>Answer</th>
+          <th>Paper</th>
+          <th>Youtube</th>
+          <th>Date</th>
+          
+          
+        </tr>
+      </thead>
+      <tbody>
+      	<?php while ($row = $paper2->fetch_assoc()):?>
+        <tr>
+       
+          <th>1</th>
+          <td><?php echo $row['id'];?></td>
+          <td><?php echo $row['year'];?></td>
+          <td><?php echo $row['number'];?></td>
+          <td><?php echo $row['answer'];?></td>
+          <td><?php echo $row['paper'];?></td>
+          <td><?php echo $row['youtube'];?></td>
+          <td><?php echo $row['date_add'];?></td>
+          
+        </tr>
+        <?php endwhile;?>
+       
+      
+      </tbody>
+    </table>
 		<table class="table table-striped">
       <thead>
         <tr>
