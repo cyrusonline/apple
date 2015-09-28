@@ -3,6 +3,16 @@
 
 $db = new Database();
 
+if (isset($_POST['submit'])){
+	$year = mysqli_real_escape_string($db->link, $_POST['year']);
+	$number = mysqli_real_escape_string($db->link, $_POST['number']);
+	$answer = mysqli_real_escape_string($db->link, $_POST['answer']);
+	$paper = mysqli_real_escape_string($db->link, $_POST['paper']);
+	$youtube = mysqli_real_escape_string($db->link, $_POST['youtube']);
+	
+}?>
+<?php 
+
 
 
 
