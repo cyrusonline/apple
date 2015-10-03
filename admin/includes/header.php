@@ -56,3 +56,8 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+    
+    <?php if (isset($_GET['msg'])):?>
+			
+			<div class="alert alert-success"><?php echo htmlentities($_GET['msg']); ?> </div>
+			<?php endif;?>		

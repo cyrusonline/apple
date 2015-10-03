@@ -1,5 +1,25 @@
 <?php include 'includes/header.php';?>
+<?php 
 
+$db = new Database();
+
+if (isset($_POST['submit'])){
+	$name = mysqli_real_escape_string($db->link, $_POST['name']);
+	
+	//Simple validation
+if ($name == ''){
+	
+}else {
+	$query = "INSERT INTO topics
+			(name) 
+		VALUES('$name')	";
+	$insert_row = $db->insert($query);
+}
+}
+
+
+
+?>
 
 <div class="container">
 <h2>Add questions</h2>

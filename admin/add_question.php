@@ -9,14 +9,21 @@ if (isset($_POST['submit'])){
 	$answer = mysqli_real_escape_string($db->link, $_POST['answer']);
 	$paper = mysqli_real_escape_string($db->link, $_POST['paper']);
 	$youtube = mysqli_real_escape_string($db->link, $_POST['youtube']);
+	//Simple validation
+if ($year == ''|| $number == ''||$paper == ''){
 	
-}?>
-<?php 
-
+}else {
+	$query = "INSERT INTO questions
+			(year, number, answer, paper, youtube) 
+		VALUES('$year','$number','$answer','$paper','$youtube')	";
+	$insert_row = $db->insert($query);
+}
+}
 
 
 
 ?>
+
 
 <div class="container">
 <h2>Add questions</h2>
