@@ -10,9 +10,35 @@ $question = $db->select($query)->fetch_assoc();
 
 
 ?>
+
+<?php 
+
+if (isset($_POST['submit'])){
+	$year = mysqli_real_escape_string($db->link, $_POST['year']);
+	$number = mysqli_real_escape_string($db->link, $_POST['number']);
+	$answer = mysqli_real_escape_string($db->link, $_POST['answer']);
+	$paper = mysqli_real_escape_string($db->link, $_POST['paper']);
+	$youtube = mysqli_real_escape_string($db->link, $_POST['youtube']);
+	//Simple validation
+	if ($year == ''|| $number == ''||$paper == ''){
+
+	}else {
+		$query = "UPDATE questions
+		SET
+		year = '$year',
+		number = '$number',
+		answer = '$answer',
+		paper = '$paper',
+		youtube = '$youtube'
+		WHERE id = ".$id;
+		
+		$update_row = $db->update($query);
+	}
+}
+?>
 <div class="container">
 <h2>Add questions</h2>
-<form method="post" action="edit_question.php">
+<form method="post" action="edit_question.php?id=<?php echo $id;?>">
   <div class="form-group">
     <label>Year</label>
     <input name="year" type="text" class="form-control"  placeholder="Enter Year" value="<?php echo $question['year'];?>">
