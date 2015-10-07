@@ -35,6 +35,7 @@ if (isset($_POST['submit'])){
 }
 ?>
 <div class="container">
+
 <h2>Add questions</h2>
 <form method="post" action="edit_topic.php?id=<?php echo $id;?>">
   <div class="form-group">

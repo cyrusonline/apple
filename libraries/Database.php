@@ -46,7 +46,7 @@ class Database{
 	public function insert($query){
 		$insert_row = $this->link->query($query) or die($this->link->error.__LINE__);
 		if($insert_row){
-			header("Location:index.php?msg =".urlencode('Inserted'));
+			header("Location:index.php?msg=".urlencode('Inserted'));
 			exit();
 			
 		}else {
@@ -62,7 +62,7 @@ class Database{
 	public function update($query){
 		$update_row = $this->link->query($query) or die($this->link->error.__LINE__);
 		if($update_row){
-			header("Location:index.php?msg =".urlencode('Updated'));
+			header("Location:index.php?msg=".urlencode('Updated'));
 			exit();
 			
 		}else {
@@ -77,7 +77,7 @@ class Database{
 	public function delete($query){
 		$delete_row = $this->link->query($query) or die($this->link->error.__LINE__);
 		if($delete_row){
-			header("Location:index.php?msg =".urlencode('Deleted'));
+			header("Location:index.php?msg=".urlencode('Deleted'));
 			exit();
 				
 		}else {

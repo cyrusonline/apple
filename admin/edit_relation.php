@@ -10,7 +10,12 @@ INNER JOIN topics
 ON topics.id = relation.topic_id";
 
 $relations = $db->select($query);
+//Select topics
 
+$query = "SELECT * FROM topics";
+
+$topics = $db->select($query);
+/////////////////
 
 if (isset($_GET['delete'])){
 	$multiple = $_GET['multiple'];
@@ -37,9 +42,14 @@ if (isset($_GET['delete'])){
 	exit();
 }
 ?>
+
+
 <div class="container">
 <h2>Relation</h2>
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="GET">
+<div class="col-md-4">
+
+
   <div class="bs-example" data-example-id="striped-table">
     <table class="table table-striped">
       <thead>
