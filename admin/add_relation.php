@@ -16,11 +16,11 @@ if (isset($_GET['submit'])){
 	$chosenyear = $_GET['year'];
 	
 	
-	$query = "SELECT * FROM questions WHERE paper = 1 AND year=".$chosenyear." ORDER by year, number";
+	$query = "SELECT * FROM questions WHERE paper = 1 AND year=".$chosenyear." ORDER by number ASC";
 	echo $query;
 	$paper1 = $db->select($query);
 	
-	$query = "SELECT * FROM questions WHERE paper = 2";
+	$query = "SELECT * FROM questions WHERE paper = 2 AND year=".$chosenyear." ORDER by number";
 	$paper2 = $db->select($query);
 
 	echo $topicid."<br>".$chosenyear;
@@ -28,6 +28,36 @@ if (isset($_GET['submit'])){
 }
 
 echo "cccc";
+
+?>
+
+<?php 
+if (isset($_GET['add'])){
+	$multiple = $_GET['multiple'];
+	$topicid = $_GET['topicid'];
+	$i = 0;
+	
+	
+	$sql = "INSERT INTO relation ( topic_id, question_id ) VALUES";
+	foreach ($multiple as $item_id){
+		$i++;
+		if ($i == 1) {
+			$sql .= "(".$topicid.",".mysql_real_escape_string($item_id).")";
+		}else {
+			$sql .= ",(".$topicid.",".mysql_real_escape_string($item_id).")" ;
+			
+		}
+	}
+	
+	echo $sql;
+	$insert = $db->insert($sql);
+	
+	//mysql_query($sql) or die(mysql_error());
+	
+	header("location:".$_SERVER['PHP_SELF']);
+	
+	exit();
+}
 
 ?>
 
@@ -71,10 +101,61 @@ echo "cccc";
           <th>Year</th>
           <th>Question number</th>
           <th>Paper</th>
+          <td align="center"><div><input type = "submit" name = "add" value="Add Mulitple"></div></td>
         </tr>
       </thead>
       <tbody>
+      <?php $i=1?>
         <?php while($row = $paper1->fetch_assoc()) :?>
+      	
+        <tr>
+          <th scope="row"><?php echo $i?></th>
+          <td><?php echo $row['id']?></td>
+          <td><?php echo $row['year']?></td>
+          <td><?php echo $row['number']?></td>
+          <td><?php echo $row['paper']?></td>
+	          <td align="center">
+		 <input type = "checkbox" name="multiple[]" value="<?php echo $row['id'];?>">
+		</td>
+        </tr>
+        <?php $i++;?>
+        
+        <?php endwhile;?>
+   <?php while($row = $paper2->fetch_assoc()) :?>
+      	
+        <tr>
+          <th scope="row"><?php echo $i?></th>
+          <td><?php echo $row['id']?></td>
+          <td><?php echo $row['year']?></td>
+          <td><?php echo $row['number']?></td>
+          <td><?php echo $row['paper']?></td>
+    
+	          <td align="center">
+		 <input type = "checkbox" name="multiple[]" value="<?php echo $row['id'];?>">
+		</td>
+        </tr>
+        <?php $i++;?>
+        
+        <?php endwhile;?>
+      
+      </tbody>
+    </table>
+  </div><!-- /example -->
+  
+  
+    <div class="bs-example" data-example-id="striped-table">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>id</th>
+          <th>Year</th>
+          <th>Question number</th>
+          <th>Paper</th>
+        </tr>
+      </thead>
+       <tbody>
+        <?php while($row = $paper2->fetch_assoc()) :?>
       	
         <tr>
           <th scope="row">1</th>
@@ -90,41 +171,7 @@ echo "cccc";
       </tbody>
     </table>
   </div><!-- /example -->
-  
-  
-    <div class="bs-example" data-example-id="striped-table">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </table>
-  </div><!-- /example -->
-  
+  <input type="hidden" name="topicid" value="<?php echo $topicid?>">
   </form>
   
   <?php else:?>
