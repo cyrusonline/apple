@@ -16,7 +16,7 @@ if (isset($_GET['submit'])){
 	$chosenyear = $_GET['year'];
 	
 	
-	$query = "SELECT * FROM questions WHERE paper = 1 AND year=".$chosenyear." ORDER by number ASC";
+	$query = "SELECT * FROM questions WHERE paper = 1 AND year=".$chosenyear." AND id NOT IN (SELECT question_id FROM relation WHERE topic_id = ".$topicid.") ORDER by number ASC";
 	echo $query;
 	$paper1 = $db->select($query);
 	
@@ -106,6 +106,9 @@ if (isset($_GET['add'])){
       </thead>
       <tbody>
       <?php $i=1?>
+      <!-- if statement -->
+      <?php if($paper1):?>
+      
         <?php while($row = $paper1->fetch_assoc()) :?>
       	
         <tr>
@@ -118,9 +121,17 @@ if (isset($_GET['add'])){
 		 <input type = "checkbox" name="multiple[]" value="<?php echo $row['id'];?>">
 		</td>
         </tr>
-        <?php $i++;?>
         
+     
+        
+        <?php $i++;?>
+    
         <?php endwhile;?>
+        
+  
+     
+     <?php endif;?>  
+        
    <?php while($row = $paper2->fetch_assoc()) :?>
       	
         <tr>
@@ -138,23 +149,7 @@ if (isset($_GET['add'])){
         
         <?php endwhile;?>
       
-      </tbody>
-    </table>
-  </div><!-- /example -->
-  
-  
-    <div class="bs-example" data-example-id="striped-table">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>id</th>
-          <th>Year</th>
-          <th>Question number</th>
-          <th>Paper</th>
-        </tr>
-      </thead>
-       <tbody>
+
         <?php while($row = $paper2->fetch_assoc()) :?>
       	
         <tr>
